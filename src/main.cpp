@@ -35,23 +35,23 @@ int counterB = 0;
 
 unsigned long t_one_i;
 unsigned long t_two_i;
-unsigned long t_four_i;
 unsigned long t_three_i;
+unsigned long t_four_i;
 
 unsigned long t_one_f;
 unsigned long t_two_f;
-unsigned long t_four_f;
 unsigned long t_three_f;
+unsigned long t_four_f;
 
-unsigned long timerDLTA_A_i;
-unsigned long timerDLTA_B_i;
-unsigned long timerDLTA_A_f;
-unsigned long timerDLTA_B_f;
+unsigned long t_delta_one;
+unsigned long t_delta_two;
+unsigned long t_delta_three;
+unsigned long t_delta_four;
 
-unsigned long timerDLTA_STRT_AB_i;
-unsigned long timerDLTA_FNSH_AB_i;
-unsigned long timerDLTA_STRT_AB_f;
-unsigned long timerDLTA_FNSH_AB_f;
+unsigned long t_delta_one_two_i;
+unsigned long t_delta_one_two_ii;
+unsigned long t_delta_three_four_i;
+unsigned long t_delta_three_four_ii;
 
 int testsA = 0;
 int testsB = 0;
@@ -86,9 +86,234 @@ float acc_a_iv;
 float distanceTRLY = 0.163;
 float distanceCNTR = 0.5;
 
+void calculateVelocity(int print_period)
+{
+  Serial.println("\n## ---- ---- ---- ---- ----   VELOCITY   ---- ---- ---- ---- ---- ##");
+  delay(print_period);
+//------------------------------------------------------------------------
+Serial.print(">> |A_TRLLY_i");
+  delay(print_period);
 
+  t_delta_one = t_one_f - t_one_i;
+      Serial.print("\t|delta: ");
+      Serial.print(t_delta_one);
+        delay(print_period);
 
+  timerSECS_A_i = (float)t_delta_one / 1000000.00;
+      Serial.print("\t|secs: ");
+      Serial.print(timerSECS_A_i);
+        delay(print_period);
+
+  VLCTY_A_i = distanceTRLY / timerSECS_A_i;
+      Serial.print("\t|velo: ");
+      Serial.print(VLCTY_A_i);
+      Serial.println("\t| <<");
+        delay(print_period);
+//------------------------------------------------------------------------
+Serial.print(">> |AB_STRT_i");
+    delay(print_period);
+
+  t_delta_one_two_i = t_two_i - t_one_i;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_one_two_i);
+      delay(print_period);
+
+  timerSECS_STRT_AB_i = (float)t_delta_one_two_i / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_STRT_AB_i);
+      delay(print_period);
+
+  VLCTY_STRT_AB_i = distanceCNTR / timerSECS_STRT_AB_i;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_STRT_AB_i);
+    Serial.println("\t| <<");
+      delay(print_period);
+//------------------------------------------------------------------------
+Serial.print(">> |AB_FNSH_i");
+    delay(print_period);
+
+  t_delta_one_two_ii = t_two_f - t_one_f;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_one_two_ii);
+      delay(print_period);
+
+  timerSECS_FNSH_AB_i = (float)t_delta_one_two_ii / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_FNSH_AB_i);
+      delay(print_period);
+
+  VLCTY_FNSH_AB_i = distanceCNTR / timerSECS_FNSH_AB_i;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_FNSH_AB_i);
+    Serial.println("\t| <<");
+      delay(print_period);
+
+//------------------------------------------------------------------------
+Serial.print(">> |B_TRLLY_i");
+  delay(print_period);
+
+  t_delta_two = t_two_f - t_two_i;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_two);
+      delay(print_period);
+
+  timerSECS_B_i = (float)t_delta_two / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_B_i);
+      delay(print_period);
+
+  VLCTY_B_i = distanceTRLY / timerSECS_B_i;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_B_i);
+    Serial.println("\t| <<");
+      delay(print_period);
+//------------------------------------------------------------------------
+Serial.print(">> |B_TRLLY_f");
+    delay(print_period);
+  t_delta_three = t_three_f - t_three_i;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_three);
+      delay(print_period);
+
+  timerSECS_B_f = (float)t_delta_three / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_B_f);
+      delay(print_period);
+
+  VLCTY_B_f = distanceTRLY / timerSECS_B_f;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_B_f);
+    Serial.println("\t| <<");
+      delay(print_period);
+
+//------------------------------------------------------------------------
+Serial.print(">> |AB_CNTR_f");
+    delay(print_period);
+
+  t_delta_three_four_i = t_four_i - t_three_i;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_three_four_i);
+      delay(print_period);
+
+  timerSECS_STRT_AB_f = (float)t_delta_three_four_i / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_STRT_AB_f);
+      delay(print_period);
+
+  VLCTY_STRT_AB_f = distanceCNTR / timerSECS_STRT_AB_f;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_STRT_AB_f);
+    Serial.println("\t| <<");
+      delay(print_period);
+
+//------------------------------------------------------------------------
+Serial.print(">> |AB_FNSH_f");
+    delay(print_period);
+
+  t_delta_three_four_ii = t_four_f - t_three_f;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_three_four_ii);
+      delay(print_period);
+
+  timerSECS_FNSH_AB_f = (float)t_delta_three_four_ii / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_FNSH_AB_f);
+      delay(print_period);
+
+  VLCTY_FNSH_AB_f = distanceCNTR / timerSECS_FNSH_AB_f;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_FNSH_AB_f);
+    Serial.println("\t| <<");
+      delay(print_period);
+
+//------------------------------------------------------------------------
+
+Serial.print(">> |A_TRLLY_f");
+    delay(print_period);
+
+  t_delta_four = t_four_f - t_four_i;
+    Serial.print("\t|delta: ");
+    Serial.print(t_delta_four);
+      delay(print_period);
+
+  timerSECS_A_f = (float)t_delta_four / 1000000.00;
+    Serial.print("\t|secs: ");
+    Serial.print(timerSECS_A_f);
+      delay(print_period);
+
+  VLCTY_A_f = distanceTRLY / timerSECS_A_f;
+    Serial.print("\t|velo: ");
+    Serial.print(VLCTY_A_f);
+    Serial.println("\t| <<");
+      delay(print_period);
+}
+void timerReadyPrint(int flash_period_on, int flash_period_off)
+{
+Serial.println("## ---- ---- ----   TIMER  READY   ---- ---- ---- ##");
+for(int x = 0; 0>3 ;x++)
+{
+digitalWrite(laserA, HIGH);
+digitalWrite(laserB, HIGH);
+digitalWrite(ledA, HIGH);
+digitalWrite(ledB, HIGH);
+delay(flash_period_on);
+digitalWrite(laserA, LOW);
+digitalWrite(laserB, LOW);
+digitalWrite(ledA, LOW);
+digitalWrite(ledB, LOW);
+delay(flash_period_off);
+}
+digitalWrite(laserA, HIGH);
+digitalWrite(laserB, HIGH);
+digitalWrite(ledB, HIGH);
+}
 //------------------------------------------------------------------------------
+void calculateAcceleration(int acc_delay)
+{
+Serial.println("\n## ---- ---- ---- ----    ACCELERATION    ---- ---- ---- ---- ##");
+delay(acc_delay);
+
+Serial.print(">> |a_i");
+    delay(acc_delay);
+
+    // initial
+  float velocity_i = VLCTY_A_i;
+  Serial.print("\t|v_i: ");
+  Serial.print(velocity_i);
+  delay(acc_delay);
+  // final
+  float velocity_f= VLCTY_B_i;
+  Serial.print("\t\t|v_f: ");
+  Serial.println(velocity_f);
+  delay(acc_delay);
+
+  float velocity_i_sq = velocity_i*velocity_i;
+  Serial.print("\t|v_i_sq: ");
+  Serial.print(velocity_i_sq);
+  delay(acc_delay);
+  // final
+  float velocity_f_sq =velocity_f*velocity_f;
+  Serial.print("\t\t|v_f_sq: ");
+  Serial.println(velocity_f_sq);
+  delay(acc_delay);
+
+  float velocity_delta= velocity_f_sq - velocity_i_sq;
+
+  Serial.print("\t|v_delta: ");
+  Serial.println(velocity_delta,6);
+  delay(acc_delay);
+
+  float two_distance = distanceCNTR * 2.00;
+  Serial.print("\t|2x: ");
+  Serial.println(two_distance,2);
+  delay(acc_delay);
+
+  float acc_a_i = velocity_delta / two_distance;
+
+  Serial.print("|acc_a_i: ");
+  Serial.println(acc_a_i,5);
+  delay(acc_delay);
+}
 void buttonMenu()
 {
 
@@ -103,196 +328,21 @@ void buttonMenu()
   {
     buttonAstate = 1;
 
+calculateVelocity(100);
+calculateAcceleration(200);
+// ##################################################ACCELERATION
 
-
-    Serial.println("\n## ---- ---- ---- ---- ----   VELOCITY   ---- ---- ---- ---- ---- ##");
-    delay(250);
-
-
-
-  //------------------------------------------------------------------------
-  Serial.print(">> |A_TRLLY_i");
-    delay(250);
-
-    timerDLTA_A_i = t_one_f - t_one_i;
-        Serial.print("\t|delta: ");
-        Serial.print(timerDLTA_A_i);
-          delay(250);
-
-    timerSECS_A_i = (float)timerDLTA_A_i / 1000000.00;
-        Serial.print("\t|secs: ");
-        Serial.print(timerSECS_A_i);
-          delay(250);
-
-    VLCTY_A_i = distanceTRLY / timerSECS_A_i;
-        Serial.print("\t|velo: ");
-        Serial.print(VLCTY_A_i);
-        Serial.println("\t| <<");
-          delay(250);
-  //------------------------------------------------------------------------
-  Serial.print(">> |AB_STRT_i");
-      delay(250);
-
-    timerDLTA_STRT_AB_i = t_two_i - t_one_i;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_STRT_AB_i);
-        delay(250);
-
-    timerSECS_STRT_AB_i = (float)timerDLTA_STRT_AB_i / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_STRT_AB_i);
-        delay(250);
-
-    VLCTY_STRT_AB_i = distanceCNTR / timerSECS_STRT_AB_i;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_STRT_AB_i);
-      Serial.println("\t| <<");
-        delay(250);
-  //------------------------------------------------------------------------
-  Serial.print(">> |AB_FNSH_i");
-      delay(250);
-
-    timerDLTA_FNSH_AB_i = t_two_f - t_one_f;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_FNSH_AB_i);
-        delay(250);
-
-    timerSECS_FNSH_AB_i = (float)timerDLTA_FNSH_AB_i / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_STRT_AB_i);
-        delay(250);
-
-    VLCTY_FNSH_AB_i = distanceCNTR / timerSECS_FNSH_AB_i;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_FNSH_AB_i);
-      Serial.println("\t| <<");
-        delay(250);
-
-  //------------------------------------------------------------------------
-  Serial.print(">> |B_TRLLY_i");
-    delay(250);
-
-    timerDLTA_B_i = t_two_f - t_two_i;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_B_i);
-        delay(250);
-
-    timerSECS_B_i = (float)timerDLTA_B_i / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_B_i);
-        delay(250);
-
-    VLCTY_B_i = distanceTRLY / timerSECS_B_i;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_B_i);
-      Serial.println("\t| <<");
-        delay(250);
-  //------------------------------------------------------------------------
-  Serial.print(">> |B_TRLLY_f");
-      delay(250);
-    timerDLTA_B_f = t_three_f - t_three_i;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_B_f);
-        delay(250);
-
-    timerSECS_B_f = (float)timerDLTA_B_f / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_B_f);
-        delay(250);
-
-    VLCTY_B_f = distanceTRLY / timerSECS_B_f;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_B_f);
-      Serial.println("\t| <<");
-        delay(250);
-
-  //------------------------------------------------------------------------
-  Serial.print(">> |AB_CNTR_f");
-      delay(250);
-
-    timerDLTA_STRT_AB_f = t_four_i - t_three_i;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_STRT_AB_f);
-        delay(250);
-
-    timerSECS_STRT_AB_f = (float)timerDLTA_STRT_AB_f / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_STRT_AB_f);
-        delay(250);
-
-    VLCTY_STRT_AB_f = distanceCNTR / timerSECS_STRT_AB_f;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_STRT_AB_f);
-      Serial.println("\t| <<");
-        delay(250);
-
-  //------------------------------------------------------------------------
-  Serial.print(">> |AB_FNSH_f");
-      delay(250);
-
-    timerDLTA_FNSH_AB_f = t_four_f - t_three_f;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_FNSH_AB_f);
-        delay(250);
-
-    timerSECS_FNSH_AB_f = (float)timerDLTA_FNSH_AB_f / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_STRT_AB_f);
-        delay(250);
-
-    VLCTY_FNSH_AB_f = distanceCNTR / timerSECS_FNSH_AB_f;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_FNSH_AB_f);
-      Serial.println("\t| <<");
-        delay(250);
-
-  //------------------------------------------------------------------------
-
-  Serial.print(">> |A_TRLLY_f");
-      delay(250);
-
-    timerDLTA_A_f = t_four_f - t_four_i;
-      Serial.print("\t|delta: ");
-      Serial.print(timerDLTA_A_f);
-        delay(250);
-
-    timerSECS_A_f = (float)timerDLTA_A_f / 1000000.00;
-      Serial.print("\t|secs: ");
-      Serial.print(timerSECS_A_f);
-        delay(250);
-
-    VLCTY_A_f = distanceTRLY / timerSECS_A_f;
-      Serial.print("\t|velo: ");
-      Serial.print(VLCTY_A_f);
-      Serial.println("\t| <<");
-        delay(250);
-
-//##################################################ACCELERATION
-Serial.println("\n## ---- ---- ---- ----    ACCELERATION    ---- ---- ---- ---- ##");
-delay(250);
-
-Serial.print(">> |a_i");
-    delay(250);
-
-    Serial.print("\t|v_i: ");
-    Serial.print(VLCTY_A_i);
-      delay(250);
-
-      Serial.print("\t|v_f: ");
-      Serial.print(VLCTY_B_i);
-        delay(250);
-
-
-  timerSECS_A_f = (float)timerDLTA_A_f / 1000000.00;
-    Serial.print("\t|secs: ");
-    Serial.print(timerSECS_A_f);
-      delay(250);
-
-  VLCTY_A_f = distanceTRLY / timerSECS_A_f;
-    Serial.print("\t|velo: ");
-    Serial.print(VLCTY_A_f);
-    Serial.println("\t| <<");
-      delay(250);
+//
+//   timerSECS_A_f = (float)t_delta_four / 1000000.00;
+//     Serial.print("\t|secs: ");
+//     Serial.print(timerSECS_A_f);
+//       delay(250);
+//
+//   VLCTY_A_f = distanceTRLY / timerSECS_A_f;
+//     Serial.print("\t|velo: ");
+//     Serial.print(VLCTY_A_f);
+//     Serial.println("\t| <<");
+//       delay(250);
   }
   else
   {
@@ -303,31 +353,9 @@ Serial.print(">> |a_i");
     buttonBstate = 1;
 
     stateMode = 1;
+    timerReadyPrint(100,50);
 
-    Serial.println("## ---- ---- ----   TIMER  READY   ---- ---- ---- ##");
-    digitalWrite(laserA, HIGH);
-    digitalWrite(laserB, HIGH);
-    digitalWrite(ledA, HIGH);
-    digitalWrite(ledB, HIGH);
-    delay(150);
-    digitalWrite(laserA, LOW);
-    digitalWrite(laserB, LOW);
-    digitalWrite(ledA, LOW);
-    digitalWrite(ledB, LOW);
-    delay(150);
-    digitalWrite(laserA, HIGH);
-    digitalWrite(laserB, HIGH);
-    digitalWrite(ledA, HIGH);
-    digitalWrite(ledB, HIGH);
-    delay(150);
-    digitalWrite(laserA, LOW);
-    digitalWrite(laserB, LOW);
-    digitalWrite(ledA, LOW);
-    digitalWrite(ledB, LOW);
-    delay(250);
-    digitalWrite(laserA, HIGH);
-    digitalWrite(laserB, HIGH);
-    digitalWrite(ledB, HIGH);
+
   }
   else
   {
@@ -373,8 +401,13 @@ void printCheckSensors()
   Serial.print("\t| <<");
 }
 
+void laserLedFlash()
+{
 
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+}
+
+
+//|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||SETUP||||||||
 void setup()
 {
 
@@ -382,7 +415,7 @@ void setup()
 
 
   Serial.println("#######################################################");
-  Serial.println("     LASER TIMER, VELOCITY, ACCELERATION AND ENERGY");
+  Serial.println("    LASER TIMER, VELOCITY, ACCELERATION AND ENERGY");
   Serial.println("#######################################################");
     pinMode(sensorA, INPUT);
   pinMode(sensorB, INPUT);
@@ -424,7 +457,7 @@ void setup()
 
 }
 
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||LOOP||||||||||
 void loop()
 {
 if(stateMode == 0)
