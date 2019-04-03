@@ -1,8 +1,6 @@
 #include <Arduino.h>
 
 
-// pins
-
 int sensorA = 2;
 int sensorB = 3;
 
