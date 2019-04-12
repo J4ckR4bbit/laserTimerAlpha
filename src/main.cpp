@@ -1,6 +1,8 @@
 #include <Arduino.h>
 
 
+
+
 int sensorA = 2;
 int sensorB = 3;
 
@@ -527,6 +529,7 @@ void calculateVelocityForward()
   Serial.print("\t|velo: ");
   Serial.print(vel_A_i);
   Serial.println("\t| <<");
+
   //------------------------------------------------------------------------
   Serial.print(">> |vel_C_i");
   Serial.print("\t|delta: ");
@@ -536,6 +539,7 @@ void calculateVelocityForward()
   Serial.print("\t|velo: ");
   Serial.print(vel_C_i);
   Serial.println("\t| <<");
+
   //------------------------------------------------------------------------
   Serial.print(">> |vel_C_ii");
   Serial.print("\t|delta: ");
@@ -901,7 +905,7 @@ void buttonMenu()
   {
     buttonCstate = 0;
   }
-}
+}p]
 //------------------------------------------------------------------------------
 
 
@@ -954,6 +958,10 @@ void setup()
   digitalWrite(ledA, LOW);
   digitalWrite(ledB, LOW);
   delay(250);
+
+
+
+
 
 }
 
