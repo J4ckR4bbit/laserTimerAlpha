@@ -153,4 +153,11 @@ void lcdStartUp()
   delay(x_bit);
 
   lcd.clear();
+
+  lcd.draw(laserWarning, sizeof(laserWarning) / sizeof(laserWarning[0]), true);
+  delay(x_bit);
+
+  lcd.clear();
+
+
 }
