@@ -106,8 +106,8 @@ void serialStartUp()
 
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
-  digitalWrite(ledB, HIGH);
+  digitalWrite(laserC, HIGH);
+
   delay(100);
   digitalWrite(laserA, LOW);
   digitalWrite(laserB, LOW);
@@ -116,8 +116,8 @@ void serialStartUp()
   delay(100);
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
-  digitalWrite(ledB, HIGH);
+  digitalWrite(laserC, HIGH);
+
   delay(100);
   digitalWrite(laserA, LOW);
   digitalWrite(laserB, LOW);
@@ -126,8 +126,8 @@ void serialStartUp()
   delay(250);
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
-  digitalWrite(ledB, HIGH);
+  digitalWrite(laserC, HIGH);
+
   delay(100);
   digitalWrite(laserA, LOW);
   digitalWrite(laserB, LOW);

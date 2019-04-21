@@ -39,8 +39,8 @@
 
   //||||||||||||||||||||||||||||||||||||||||||||||||||   STATE VARIABLES   ||||||||
   int stateSigA = 0;
-  int stateBSig= 0;
-  int stateBSig= 0;
+  int stateSigB= 0;
+  int stateSigC= 0;
 
 
   int stateMode = 0;

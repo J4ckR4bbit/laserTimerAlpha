@@ -2,7 +2,7 @@ void timerReadyPrintForwards(int flash_period_on, int flash_period_off)
 {
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
@@ -12,7 +12,7 @@ void timerReadyPrintForwards(int flash_period_on, int flash_period_off)
   delay(flash_period_off);
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
@@ -57,7 +57,7 @@ void timerReadyPrintReverse(int flash_period_on, int flash_period_off)
 {
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
@@ -67,7 +67,7 @@ void timerReadyPrintReverse(int flash_period_on, int flash_period_off)
   delay(flash_period_off);
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
@@ -111,7 +111,7 @@ void timerReadyPrintBothWay(int flash_period_on, int flash_period_off)
 {
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
@@ -121,7 +121,7 @@ void timerReadyPrintBothWay(int flash_period_on, int flash_period_off)
   delay(flash_period_off);
   digitalWrite(laserA, HIGH);
   digitalWrite(laserB, HIGH);
-  digitalWrite(ledA, HIGH);
+  digitalWrite(laserC, HIGH);
   digitalWrite(ledB, HIGH);
   delay(flash_period_on);
   digitalWrite(laserA, LOW);
