@@ -148,6 +148,7 @@ void lcdStartUp()
   lcd.draw(hintEduLogo, sizeof(hintEduLogo) / sizeof(hintEduLogo[0]), true);
   delay(x_bit);
   // Clear the screen by filling it with white pixels
+  lcd.clear();
 
   lcd.draw(menuLogo, sizeof(menuLogo) / sizeof(menuLogo[0]), true);
   delay(x_bit);

@@ -3,15 +3,7 @@
 */
 
 
-  //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||ARDUINO PINS ||||||||
-  int sensorA = 2;
-  int sensorB = 3;
 
-  int laserA = 4;
-  int laserB = 5;
-
-  int ledA = 6;
-  int ledB = 7;
 
 
   //||||||||||||||||||||||||||||||||||||||||||||||||||   TIME VARIABLES   ||||||||
@@ -46,8 +38,10 @@
 
 
   //||||||||||||||||||||||||||||||||||||||||||||||||||   STATE VARIABLES   ||||||||
-  int stateA = 0;
-  int stateB= 0;
+  int stateSigA = 0;
+  int stateBSig= 0;
+  int stateBSig= 0;
+
 
   int stateMode = 0;
   int stateModeA= 0;
